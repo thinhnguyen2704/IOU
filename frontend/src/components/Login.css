@@ -1,0 +1,12 @@
+.login {
+    position: center;
+}
+
+.login__inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+.login__inputs > p{
+    margin-top: 40px;
+}

@@ -8,31 +8,35 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
-import { Layout, Menu, Breadcrumb, Typography } from 'antd';
-
-const { Header, Content, Footer } = Layout;
-const {Title} = Typography;
+import Header from './components/Header';
+import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
   return (
-    <Layout className="layout">
-    <Header>
-      <div className="logo" />
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-        <Menu.Item key="1">Leaderboard</Menu.Item>
-        <Menu.Item key="2">Sign In</Menu.Item>
-      </Menu>
-    </Header>
-    <Content style={{ padding: '0 50px' }}>
-      <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>List</Breadcrumb.Item>
-        <Breadcrumb.Item>App</Breadcrumb.Item>
-      </Breadcrumb>
-      <div className="site-layout-content">Content</div>
-    </Content>
-    <Footer style={{ textAlign: 'center' }}>Assignment 2 - Advanced Internet Programming - Group X</Footer>
-  </Layout>
+    <div className="app"> 
+      <Router>
+      <Header />
+      <div className="app__body">
+        <Switch>
+          <Route path="/leaderboard">
+            <h1>Leaderboard</h1>
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          {/* This is the default route */}
+
+          <Route path="/">  
+            <h1>Home</h1>
+          </Route>
+        </Switch>
+      </div>
+      </Router>
+    </div>
   );
 }
 

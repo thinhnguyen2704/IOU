@@ -1,0 +1,12 @@
+.register {
+    position: center;
+}
+
+.register__inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+.register__inputs > p{
+    margin-top: 40px;
+}
