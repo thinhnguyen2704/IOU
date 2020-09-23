@@ -11,6 +11,8 @@ import './App.css';
 import Header from './components/Header';
 import Login from './components/Login';
 import Register from './components/Register';
+import Leaderboard from './components/Leaderboard';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -20,7 +22,7 @@ function App() {
       <div className="app__body">
         <Switch>
           <Route path="/leaderboard">
-            <h1>Leaderboard</h1>
+            <Leaderboard />
           </Route>
           <Route path="/login">
             <Login />
@@ -31,7 +33,7 @@ function App() {
           {/* This is the default route */}
 
           <Route path="/">  
-            <h1>Home</h1>
+            <Home />
           </Route>
         </Switch>
       </div>
