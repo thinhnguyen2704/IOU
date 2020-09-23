@@ -1,7 +1,6 @@
 import React from 'react';
 import './Home.css';
 import {Container, TextField, Button, ButtonGroup} from '@material-ui/core';
-import { DataGrid } from '@material-ui/data-grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
