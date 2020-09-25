@@ -6,11 +6,10 @@ import {useUserStatus} from './../context/UserContext'
 
 function Header() {
     //retrieve user status from userContext, either logged in or not logged in
-    const user = useUserStatus();
+    const [user, setUser] = useUserStatus();
 
     function logout(){
-        console.log("Log Out");
-        //logout
+        setUser(false);
     }
 
     return (
@@ -42,8 +41,8 @@ function Header() {
                         <span>Leaderboard</span>
                     </div>
                 </Link>
-                <Link to={user ? {logout} : "/login"} className="header__link">
-                    <div className="header__option">
+                <Link to={!user && "/login"} className="header__link">
+                    <div onClick={logout} className="header__option">
                         <span>{user?"Log Out":"Log In"}</span>
                     </div>
                 </Link> 
