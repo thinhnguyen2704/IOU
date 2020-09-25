@@ -15,7 +15,7 @@ export function UserProvider({children}){
     }
 
     return(
-        <UserContext.Provider value={loggedIn}>
+        <UserContext.Provider value={[loggedIn, setLoggedIn]}>
                 {children}
         </UserContext.Provider>
     )

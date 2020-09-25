@@ -13,7 +13,7 @@ import {useUserStatus} from './../context/UserContext'
 
 function Home() {
 
-    const user = useUserStatus();
+    const [user,setUser] = useUserStatus();
     
     function createData(request, from, rewards) {
         return {request, from, rewards};
