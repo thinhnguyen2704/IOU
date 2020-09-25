@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, TextField, Button, ButtonGroup} from '@material-ui/core';
 import { Link, Route } from 'react-router-dom';
-import {useUserStatus} from './../context/UserContext';
+import {useUserStatus} from '../../hoc/UserContext';
 
 function Leaderboard() {
 

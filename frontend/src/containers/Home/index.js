@@ -1,5 +1,4 @@
 import React from 'react';
-import './Home.css';
 import {Container, TextField, Button, ButtonGroup} from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
-import {useUserStatus} from './../context/UserContext'
+import {useUserStatus} from '../../hoc/UserContext'
 
 function Home() {
 

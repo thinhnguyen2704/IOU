@@ -1,6 +1,6 @@
 import { Button, Container, TextField } from '@material-ui/core'
 import React from 'react'
-import './Register.css'
+import './style.css'
 
 function Register() {
     return (

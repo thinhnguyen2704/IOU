@@ -1,8 +1,8 @@
 import React from 'react';
 import HomeIcon from '@material-ui/icons/Home';
-import './Header.css';
+import './style.css';
 import { Link } from 'react-router-dom';
-import {useUserStatus} from './../context/UserContext'
+import {useUserStatus} from '../../hoc/UserContext'
 
 function Header() {
     //retrieve user status from userContext, either logged in or not logged in
