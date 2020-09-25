@@ -1,8 +1,12 @@
 import React from 'react';
 import {Container, TextField, Button, ButtonGroup} from '@material-ui/core';
 import { Link, Route } from 'react-router-dom';
+import {useUserStatus} from './../context/UserContext';
 
 function Leaderboard() {
+
+    const user = useUserStatus();
+
     return (
         <div>
              <Container fixed style={{backgroundColor: '#ffffff', padding: 50}}>
