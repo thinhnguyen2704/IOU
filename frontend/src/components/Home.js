@@ -9,8 +9,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
+import {useUserStatus} from './../context/UserContext'
 
 function Home() {
+
+    const [user,setUser] = useUserStatus();
     
     function createData(request, from, rewards) {
         return {request, from, rewards};
@@ -48,10 +51,10 @@ function Home() {
                                 <TableCell align="right">{row.rewards}</TableCell>
                                 <TableCell align="right">
                                     <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
-                                        <Link to="/login">
+                                        <Link to={user ? "/favors/add" : "/login"}>
                                             <Button>Add Favor</Button>
                                         </Link>    
-                                        <Link to="/login">
+                                        <Link to={user ? "/favors/resolve" : "/login"}>
                                             <Button>Resolve</Button>
                                         </Link> 
                                     </ButtonGroup>

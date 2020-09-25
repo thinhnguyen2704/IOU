@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {
@@ -14,9 +14,15 @@ import Register from './components/Register';
 import Leaderboard from './components/Leaderboard';
 import Home from './components/Home';
 
+//import contexts
+import {UserProvider} from './context/UserContext';
+
 function App() {
+
   return (
     <div className="app"> 
+    {/* Pass user's data to app components */}
+    <UserProvider>
       <Router>
       <Header />
       <div className="app__body">
@@ -30,14 +36,15 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
+          
           {/* This is the default route */}
-
           <Route path="/">  
             <Home />
           </Route>
         </Switch>
       </div>
       </Router>
+    </UserProvider>
     </div>
   );
 }
