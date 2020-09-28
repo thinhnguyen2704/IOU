@@ -5,7 +5,9 @@ import Login from "./containers/Login";
 import Register from "./containers/Register";
 import Leaderboard from "./containers/Leaderboard";
 import Home from "./containers/Home";
-import NotFound from './containers/NotFound'
+import NotFound from './containers/NotFound';
+import Favors from './containers/Favors';
+import Debts from './containers/Debts';
 
 //import contexts
 import { UserProvider } from "./hoc/UserContext";
@@ -30,6 +32,15 @@ function App() {
               </Route>
               <Route path="/register">
                 <Register />
+              </Route>
+              <Route path="/favors">
+                <Favors />
+              </Route>
+              <Route path="/debts">
+                <Debts />
+              </Route>
+              <Route path="/requests">
+                <Home />
               </Route>
               <Route>
                 <NotFound />

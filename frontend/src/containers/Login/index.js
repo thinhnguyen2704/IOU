@@ -1,15 +1,17 @@
 import React from 'react';
 import {Container, TextField, Button} from '@material-ui/core';
 import './style.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {useUserStatus} from '../../hoc/UserContext'
 
 function Login() {
 
     const [user,setUser] = useUserStatus();
+    const history = useHistory();
 
     function logIn(){
-        setUser(prev => !prev)
+        setUser(true);
+        history.push("/");
     }
 
     return (
