@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
 const user = require("./routes/api/user");
+const request = require("./routes/api/request");
 
 const app = express();
 
@@ -25,7 +26,7 @@ mongoose.Promise = global.Promise;
 app.use(passport.initialize());
 require("./middleware/passport")(passport);
 app.use("/api/user", user);
-app.use("/api/request/", require("./routes/api/request"));
+app.use("/api/request/", request);
 
 if (process.env.NODE_ENV === "production") {
    app.use(express.static("client/build"));

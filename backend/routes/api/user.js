@@ -8,23 +8,21 @@ const validateLoginInput = require('../../validation/login');
 const User = require('../../models/User');
 
 // Signup Route
-
 router.post('/signup', (req, res) => {
   const { errors, isValid } = validateSignupInput(req.body);
-  const { userName, email, password } = req.body;
+  const { userID, userName, password, numOfDebts, numOfCompletedRequests} = req.body;
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
-  User.findOne({ $or: [{ email }, { userName }] }).then((user) => {
+  User.findOne({ $or: [{ userName }] }).then((user) => {
     if (user) {
-      if (user.email === email) {
-        return res.status(400).json({ email: 'Email is already taken' });
-      } else {
+      if (user.userName === userName) {
         return res.status.json({ userName: 'Username is already taken' });
       }
     } else {
-      const newUser = new User({ userName, email, password });
+      numOfDebts, numOfCompletedRequests = 0;
+      const newUser = new User({ userID, userName, password, numOfDebts, numOfCompletedRequests});
 
       //Hashing password before storing in database
       bcrypt.genSalt(10, (err, salt) => {
@@ -46,10 +44,10 @@ router.post('/login', (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  const { email, password } = req.body;
-  User.findOne({ email }).then((user) => {
+  const { userName, password } = req.body;
+  User.findOne({ userName }).then((user) => {
     if (!user) {
-      return res.status(404).json({ email: 'Email not found' });
+      return res.status(404).json({ UserName: 'User name not found' });
     }
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
