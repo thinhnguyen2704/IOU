@@ -1,5 +1,4 @@
 const Validator = require('validator');
-const Validator = require('is-empty');
 const isEmpty = require('is-empty');
 
 module.exports = validateSignupInput = (data) => {

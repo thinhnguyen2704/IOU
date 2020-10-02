@@ -14,12 +14,12 @@ const userModel = {
     type: String,
     required: true,
   },
-  numOfDebts: {
-    type: Int16Array,
-  },
-  numOfCompletedRequests: {
-    type: Int16Array,
-  }
+  // numOfDebts: {
+  //   type: Int16Array,
+  // },
+  // numOfCompletedRequests: {
+  //   type: Int16Array,
+  // }
 };
 
 const UserSchema = new Schema(userModel);
