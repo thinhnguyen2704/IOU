@@ -9,11 +9,11 @@ const favorModel = {
     }, 
     ownerID: {
         type: Schema.Types.ObjectId,
-        reference: User,
+        ref: 'User',
     },
     debtID: {
         type: Schema.Types.ObjectId,
-        reference: User,
+        ref: 'User',
     },
     detail: {
         name: {
@@ -21,7 +21,7 @@ const favorModel = {
             required: true,
         },
         quantity: {
-            type: Int16Array,
+            type: Number,
             required: true,
         },
     },
@@ -34,7 +34,7 @@ const favorModel = {
         required: true,
     },
     createdTime: {
-        type: Date,
+        type: Date.now,
         required: true, 
     },
     completedImage: {

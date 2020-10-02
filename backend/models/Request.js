@@ -14,7 +14,7 @@ const requestModel = {
   requestFavors: {
     from: {
       type: Schema.Types.ObjectId,
-      reference: User,
+      ref: 'User',
     },
     rewards: {
       name: {
@@ -22,14 +22,14 @@ const requestModel = {
         required: true,
       },
       quantity: {
-        type: Int16Array,
+        type: Number,
         required: true,
       }
     },
   },
   resolverID: {
     type: Schema.Types.ObjectId,
-    reference: User,
+    ref: 'User',
   },
   resolverProof: {
     type: String,

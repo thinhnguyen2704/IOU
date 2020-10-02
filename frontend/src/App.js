@@ -9,14 +9,16 @@ import NotFound from './containers/NotFound';
 import Favors from './containers/Favors';
 import Debts from './containers/Debts';
 
-//import contexts
-import { UserProvider } from "./hoc/UserContext";
+//import user context
+import {useUserStatus} from './hoc/UserContext';
 
 function App() {
+
+  const [{user}, dispatch] = useUserStatus();
+
   return (
     <div className="app">
       {/* Pass user's data to app components */}
-      <UserProvider>
         <Router>
           <Header />
           <div className="app__body">
@@ -34,10 +36,18 @@ function App() {
                 <Register />
               </Route>
               <Route path="/favors">
+              {user ? (
                 <Favors />
+              ):(
+                <Login />
+              )}
               </Route>
               <Route path="/debts">
+              {user ? (
                 <Debts />
+              ):(
+                <Login />
+              )}
               </Route>
               <Route path="/requests">
                 <Home />
@@ -48,7 +58,6 @@ function App() {
             </Switch>
           </div>
         </Router>
-      </UserProvider>
     </div>
   );
 }
