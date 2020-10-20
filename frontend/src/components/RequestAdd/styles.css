@@ -1,0 +1,42 @@
+.req-dialog{
+    padding: 60px;
+}
+
+.req-dialog-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.req-dialog-request {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.req-dialog-request.text {
+    display: flex;
+    flex-direction: column;
+    margin-right: 300px;
+}
+
+.req-dialog-reward {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.req-dialog-reward.text {
+    display: flex;
+    flex-direction: column;
+    margin-right: 300px;
+    justify-content: start;
+}
+
+.req-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+} 

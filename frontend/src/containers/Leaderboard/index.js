@@ -1,30 +1,31 @@
 import React from 'react';
 import {Container, TextField, Button, ButtonGroup} from '@material-ui/core';
-import { Link, Route } from 'react-router-dom';
-import {useUserStatus} from '../../hoc/UserContext';
+import { Link, Route, useHistory } from 'react-router-dom';
+import {useUserStatus} from '../../hoc/UserContext/UserContext';
+import Active from '../../components/Active';
+import DebtsLeaderboard from '../../components/DebtsLeaderboard';
+import "./styles.css";
 
 function Leaderboard() {
 
     const user = useUserStatus();
+    const history = useHistory();
 
     return (
         <div>
              <Container fixed style={{backgroundColor: '#ffffff', padding: 50}}>
                 <h1>Leaderboard</h1>
+                <p className="board-description">"The leaderboard show the users with the least number of debts and users with the most number of resolved requests, click on either of the buttons below to discover the leaderboard!"</p>
                 {/* Router to debts and active */}
-                <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
-                    <Link to="/leaderboard/debts">
-                        <Button>Debts</Button>
-                    </Link>    
-                    <Link to="/leaderboard/active">
-                        <Button>Active</Button>
-                    </Link> 
+                <ButtonGroup  aria-label="contained primary button group">
+                        <Button variant="contained" color="primary" onClick={()=>{history.push("/leaderboard/debts")}}>Debts</Button>
+                        <Button variant="contained" color="secondary" onClick={()=>{history.push("/leaderboard/active")}}>Active</Button>
                 </ButtonGroup>
                 <Route path="/leaderboard/active">
-                    <h1>Active</h1>
+                    <Active />
                 </Route>
                 <Route path="/leaderboard/debts">
-                    <h1>Debts</h1>
+                    <DebtsLeaderboard />
                 </Route>
             </Container>
         </div>

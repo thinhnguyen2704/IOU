@@ -1,0 +1,17 @@
+.debts-dialog {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.debts-dialog > h1 {
+    margin-bottom: 20px;
+}
+
+.debts-dialog > .MuiButtonGroup-root {
+    margin-top: 20px;
+    justify-content: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

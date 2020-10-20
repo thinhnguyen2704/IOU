@@ -2,8 +2,8 @@ import { AccordionActions, Button, Container, TextField } from '@material-ui/cor
 import React, {useState} from 'react'
 import './style.css'
 import axios from '../../hoc/axios'
-import {useUserStatus} from '../../hoc/UserContext'
-import {ACTIONS} from '../../hoc/reducer'
+import {useUserStatus} from '../../hoc/UserContext/UserContext'
+import {ACTIONS} from '../../hoc/UserContext/reducer'
 import { Redirect, useHistory } from 'react-router-dom'
 
 function Register() {
@@ -34,7 +34,13 @@ function Register() {
                 setMessage("Successfully registered!");
                 history.push("/");
             }).catch((error)=>{
-                setMessage(error.response.data.userName);
+                console.log(error.response.data.password)
+                if (typeof error.response.data.userName != "undefined") {
+                    setMessage(error.response.data.userName);
+                } else {
+                    setMessage(error.response.data.password)
+                }
+                
             })
         }
     }
@@ -47,7 +53,7 @@ function Register() {
                     <TextField style={{backgroundColor: errorSign ? "#ffe6e6" : "white"}} required onChange={e=>setUserName(e.target.value)} id="usernameInput" label="Username" type="text"/>
                     <TextField style={{backgroundColor: errorSign ? "#ffe6e6" : "white"}}  required onChange={e=>setPassword(e.target.value)} id="passwordInput" label="Password" type="password"/>
                     <TextField style={{backgroundColor: errorSign ? "#ffe6e6" : "white"}}  required onChange={e=>setRetypedPassword(e.target.value)} id="rePasswordInput" label="Re-enter Password" type="password"/>
-                    <p>{message}</p>
+                    <p style={{color: 'red'}}>{message}</p>
                     <Button variant="outlined" onClick={signUp} color="primary" style={{marginTop: 50}}>Register</Button>
                 </div>
             </Container>

@@ -1,23 +1,19 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userModel = {
-  userID: {
-    type: Schema.Types.ObjectId,
-  },
   userName: {
     type: String,
     required: true,
+    unique: true,
+    trim: true,
+    minlength: 1,
   },
   password: {
     type: String,
     required: true,
   },
-  numOfDebts: {
-    type: Number,
-    default: 0,
-  },
-  numOfCompletedRequests: {
+  completedRequest: {
     type: Number,
     default: 0,
   }
@@ -25,4 +21,4 @@ const userModel = {
 
 const UserSchema = new Schema(userModel);
 
-module.exports = mongoose.model('users', UserSchema);
+module.exports = mongoose.model("User", UserSchema);

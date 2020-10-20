@@ -1,14 +1,15 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
-const validateSignupInput = require('../../validation/signup');
-const validateLoginInput = require('../../validation/login');
-const User = require('../../models/User');
+const validateSignupInput = require("../../validation/signup");
+const validateLoginInput = require("../../validation/login");
+const User = require("../../models/User");
+const passport = require("passport");
 
 // Signup Route
-router.post('/signup', (req, res) => {
+router.post("/signup", (req, res) => {
   const { errors, isValid } = validateSignupInput(req.body);
   const { userName, password } = req.body;
   if (!isValid) {
@@ -18,10 +19,12 @@ router.post('/signup', (req, res) => {
   User.findOne({ userName }).then((user) => {
     if (user) {
       if (user.userName === userName) {
-        return res.status(400).json({ userName: 'Username ' + user.userName + ' is already taken' });
+        return res.status(400).json({
+          userName: "Username " + user.userName + " is already taken",
+        });
       }
     } else {
-      const newUser = new User({userName, password});
+      const newUser = new User({ userName, password });
 
       //Hashing password before storing in database
       bcrypt.genSalt(10, (err, salt) => {
@@ -30,15 +33,30 @@ router.post('/signup', (req, res) => {
           newUser.password = hash;
           newUser
             .save()
-            .then((user) => res.json(user))
-            .catch((err) => console.log({ error: 'Cannot create new user' }));
+            .then((user) => {
+              const payload = {
+                userName: newUser.userName,
+              };
+              jwt.sign(payload, SECRET, { expiresIn: 3600 }, (err, token) => {
+                if (err) {
+                  console.log(err);
+                }
+                return res.json({
+                  success: true,
+                  token: "Bearer " + token,
+                  userName: user.userName,
+                  userID: user._id,
+                });
+              });
+            })
+            .catch((err) => console.log({ error: "Cannot create new user" }));
         });
       });
     }
   });
 });
 
-router.post('/login', (req, res) => {
+router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
@@ -46,7 +64,7 @@ router.post('/login', (req, res) => {
   const { userName, password } = req.body;
   User.findOne({ userName }).then((user) => {
     if (!user) {
-      return res.status(404).json({ userName: 'Username not found!' });
+      return res.status(404).json({ userName: "Username not found!" });
     }
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
@@ -60,16 +78,30 @@ router.post('/login', (req, res) => {
           }
           return res.json({
             success: true,
-            token: 'Bearer ' + token,
+            token: "Bearer " + token,
             userName: user.userName,
+            userID: user._id,
           });
         });
       } else {
-        return res.status(400).json({ password: 'Incorrect Password!' });
+        return res.status(400).json({ password: "Incorrect Password!" });
       }
     });
   });
 });
 
-module.exports = router;
+router.get("/users", (req, res) => {
+  User.find({}, "userName completedRequest").then((users) => {
+    if (users.length != "undefined") return res.status(200).json(users);
+  });
+});
 
+router.get(
+  "/verify",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.send("Session available");
+  }
+);
+
+module.exports = router;

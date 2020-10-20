@@ -1,35 +1,36 @@
-const mongoose = require('mongoose');
-const User = require('./User');
+const mongoose = require("mongoose");
+const User = require("./User");
+const Prize = require("./Prize");
 const Schema = mongoose.Schema;
 
 const requestModel = {
-  requestID: {
-    type: Schema.Types.ObjectId,
-    required: true,
-  },
   requestContent: {
     type: String,
     required: true,
   },
-  requestFavors: {
-    from: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-    },
-    rewards: {
-      name: {
-        type: String,
+  requestFavors: [
+    {
+      from: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: true,
       },
-      quantity: {
-        type: Number,
-        required: true,
-      }
+      rewards: [
+        {
+          id: {
+            type: Schema.Types.ObjectId,
+            ref: "Prize",
+          },
+          quantity: {
+            type: Number,
+          },
+        },
+      ],
     },
-  },
+  ],
   resolverID: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
   },
   resolverProof: {
     type: String,
@@ -38,4 +39,4 @@ const requestModel = {
 
 const RequestSchema = new Schema(requestModel);
 
-module.exports = mongoose.model('requests', RequestSchema);
+module.exports = mongoose.model("Request", RequestSchema);

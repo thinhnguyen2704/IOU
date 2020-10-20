@@ -1,0 +1,10 @@
+.favor__heading {
+    display: flex;
+    align-items: center;
+    height: 62px;
+}
+
+.favor__heading > h1 {
+    margin-right: 50px;
+}
+

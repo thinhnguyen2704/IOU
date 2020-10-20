@@ -1,69 +1,69 @@
 .favorAdd {
-    padding: 60px;
+  padding: 60px;
+  width: 80vw;
 }
 
 .favorAdd__body {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-.favorAdd__left{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-right: 100px;
+.favorAdd__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 100px;
 }
 
 .favorAdd__left > .MuiIconButton-root {
-    margin-top: 20px;
-    border-radius: 0;
-    border: 1px black;
+  margin-top: 20px;
+  border-radius: 0;
+  border: 1px black;
 }
 
 .favorAdd__left > .MuiIconButton-root:hover {
-    background-color: gray;
-    color:white;
+  background-color: gray;
+  color: white;
 }
 
 .favorAdd__chooseFrom {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 30px;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  justify-content: space-between;
 }
 
 .favorAdd__chooseFrom > p {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .favorAdd__chooseItems > p {
-    margin-right: 20px;
-    justify-content: space-between;
+  margin-right: 20px;
+  justify-content: space-between;
 }
 
 .favorAdd__chooseItems > .MuiInputBase-root {
-    margin-left: 20px;
-    
+  margin-left: 20px;
 }
 
 .favorAdd__chooseItems {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .favorAdd__right {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .favorAdd__proof {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
 }
 
 .favorAdd__buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-} 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

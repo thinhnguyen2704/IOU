@@ -1,5 +1,5 @@
 .header{
-    background-color: #131921;
+    background-color: #252251;
     padding: 10px 40px;
     align-items: center;
     overflow: hidden;
@@ -12,6 +12,16 @@
     margin-right: 30px;
     float:left;
     padding: 10px;
+}
+
+.header__brand {
+    display: flex;
+    float: left;
+}
+
+.header__brand >  h1 {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .header__nav {
@@ -33,7 +43,7 @@
 }
 
 .header__option:hover{
-    background-color: #525252;
+    background-color: #171438;
 }
 
 .header__option > span {

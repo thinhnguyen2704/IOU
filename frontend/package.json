@@ -10,9 +10,12 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "react": "^16.13.1",
+    "react-data-table-component": "^6.11.5",
     "react-dom": "^16.13.1",
+    "react-file-base64": "^1.0.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "styled-components": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
